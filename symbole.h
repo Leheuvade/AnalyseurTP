@@ -23,14 +23,19 @@ class Entier : public Symbole {
       Entier(int v) : Symbole(INT), valeur(v) { }
       ~Entier() { }
       virtual void Affiche();
+      int getValeur();
    protected:
       int valeur;
 };
 
 class Expression : public Symbole {
-	public :
-	Expression(): Symbole(EXPR) {}
-	virtual ~Expression() {};
+	public:
+   	Expression(Entier * e): Symbole(EXPR), valeur(e->getValeur()) {}
+   	virtual ~Expression() {}
+      virtual void Affiche();
+      inline int eval(){return valeur;};
+   protected:
+      int valeur;
 };
 
 

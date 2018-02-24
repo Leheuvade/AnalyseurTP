@@ -15,16 +15,19 @@ void Automate::reduction(int n, Symbole * s) {
 		state.pop_back();
 	}
 
-	for(int i=0;i<n;i++)
-	{
-		delete(symbole.back());
-		symbole.pop_back();
-	}
-
-	symbole.push_back(new Symbole(EXPR));
-	state.back()->transition(*this, new Symbole(EXPR));
+	state.back()->transition(*this, s);
 
 }
+
+void Automate::reduction5(int n, Symbole * s) {
+
+	Entier * e = (Entier *) symbole.back();
+	symbole.pop_back();
+	Expression * resultat = new Expression(e);
+	delete e;
+	reduction(n,resultat);
+}
+
 
 void Automate::print() const{
 	state.back()->print();

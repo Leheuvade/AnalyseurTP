@@ -17,6 +17,8 @@ class Automate {
 	void print() const;
       void decalage(Symbole * s, Etat * e);
       void reduction(int l, Symbole * s);
+
+      void reduction5(int n, Symbole * s);
       Etat * getEtatCourant();
 
    protected:
