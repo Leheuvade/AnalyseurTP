@@ -8,18 +8,18 @@ bool E3::transition(Automate & automate, Symbole *s)
 		case INT:
 			break;
 		case PLUS:
-			automate.reduction5(1, s);
+			automate.reduction5(s);
 			break;
 		case MULT:
-			automate.reduction5(1, s);
+			automate.reduction5(s);
 			break;
 		case OPENPAR:
 			break;
 		case CLOSEPAR:
-			automate.reduction5(1, s);
+			automate.reduction5(s);
 			break;
 		case FIN:
-			automate.reduction5(1, s);
+			automate.reduction5(s);
 			break;
 		case ERREUR:
 			break;

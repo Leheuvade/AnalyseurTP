@@ -22,10 +22,9 @@ bool E0::transition(Automate & automate, Symbole *s)
 			break;
 		case ERREUR:
 			break;
-		/*case EXPR:
-			automate.decalage(new E1(),s);
+		case EXPR:
 			break;
-		*/
+
 	}
 	return false;
 }

@@ -19,16 +19,41 @@ void Automate::reduction(int n, Symbole * s) {
 
 }
 
-void Automate::reduction5(int n, Symbole * s) {
+void Automate::reduction5(Symbole * s) {
 
 	Entier * e = (Entier *) symbole.back();
 	symbole.pop_back();
 	Expression * resultat = new Expression(e);
 	delete e;
-	reduction(n,resultat);
+	reduction(1,resultat);
+}
+
+void Automate::reduction3(Symbole * s) {
+
+	Entier * e = (Entier *) symbole.back();
+	Symbole * fois = (Symbole *) symbole.back()
+	Entier * e2 = (Entier *) symbole.back();
+	symbole.pop_back();
+	Expression * resultat = new Expression(e*e2);
+	delete e;
+	delete e2;
+	delete fois;
+	reduction(3,resultat);
 }
 
 
+void Automate::reduction4(Symbole * s) {
+
+	Symbole * openpar = (Symbole *) symbole.back()
+	Entier * e = (Entier *) symbole.back();
+	Symbole * closepar = (Symbole *) symbole.back()
+	symbole.pop_back();
+	//Expression * resultat = new Expression(*e2);
+	delete openpar;
+	delete e;
+	delete closepar;
+	reduction(3,resultat);
+}
 void Automate::print() const{
 	state.back()->print();
 	symbole.back()->Affiche();
