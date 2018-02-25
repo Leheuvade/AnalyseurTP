@@ -9,6 +9,7 @@ bool E7::transition(Automate & automate, Symbole *s)
 		case INT:
 			break;
 		case PLUS:
+			automate.reduction2(s);
 			break;
 		case MULT:
 			automate.decalage(s, new E5);
@@ -19,6 +20,7 @@ bool E7::transition(Automate & automate, Symbole *s)
 			automate.reduction2(s);
 			break;
 		case FIN:
+			automate.reduction2(s);
 			break;
 		case ERREUR:
 			break;

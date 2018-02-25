@@ -57,7 +57,6 @@ void Automate::reduction(int n, Symbole * s) {
 }
 //E->id
 void Automate::reduction5(Symbole * s) {
-
 	cout<<"réduction 5"<<endl;
 	Entier * e = (Entier *) symbole.back();
 	symbole.pop_back();
@@ -114,7 +113,6 @@ void Automate::reduction2(Symbole * s) {
 	delete plus;
 	reduction(3,resultat);
 }
-
 
 void Automate::print() const{
 	state.back()->print();

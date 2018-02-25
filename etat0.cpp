@@ -26,7 +26,6 @@ bool E0::transition(Automate & automate, Symbole *s)
 		case EXPR:
 			automate.decalage(s, new E1);
 			break;
-		
 	}
 	return false;
 }
