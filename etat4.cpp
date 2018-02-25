@@ -1,9 +1,6 @@
 #include "etat4.h"
 #include "etat3.h"
-<<<<<<< HEAD
-=======
 #include "etat2.h"
->>>>>>> fe24e4f8c7b7ae6653eecdb0ce6f9a72c46dcfd9
 #include "etat7.h"
 #include "automate.h"
 
