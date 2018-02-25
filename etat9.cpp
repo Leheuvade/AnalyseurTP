@@ -10,6 +10,7 @@ bool E9::transition(Automate & automate, Symbole *s)
 		case PLUS:
 			break;
 		case MULT:
+			automate.reduction4(s);
 			break;
 		case OPENPAR:
 			break;

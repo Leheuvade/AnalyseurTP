@@ -1,6 +1,7 @@
 #include "etat0.h"
 #include "etat3.h"
 #include "etat2.h"
+#include "etat1.h"
 #include "automate.h"
 
 bool E0::transition(Automate & automate, Symbole *s)
@@ -22,10 +23,10 @@ bool E0::transition(Automate & automate, Symbole *s)
 			break;
 		case ERREUR:
 			break;
-		/*case EXPR:
-			automate.decalage(new E1(),s);
+		case EXPR:
+			automate.decalage(s, new E1);
 			break;
-		*/
+		
 	}
 	return false;
 }

@@ -31,6 +31,7 @@ class Entier : public Symbole {
 class Expression : public Symbole {
 	public:
    	Expression(Entier * e): Symbole(EXPR), valeur(e->getValeur()) {}
+      Expression(int v): Symbole(EXPR), valeur(v) {}
    	virtual ~Expression() {}
       virtual void Affiche();
       inline int eval(){return valeur;};

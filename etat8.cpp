@@ -16,6 +16,7 @@ bool E8::transition(Automate & automate, Symbole *s)
 		case CLOSEPAR:
 			break;
 		case FIN:
+			automate.reduction3(s);
 			break;
 		case ERREUR:
 			break;
