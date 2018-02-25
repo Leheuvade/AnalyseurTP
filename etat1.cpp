@@ -8,10 +8,10 @@ bool E1::transition(Automate & automate, Symbole * s){
     		case INT:
     			break;
     		case PLUS:
-    		automate.decalage(s, new E4);
+    		  return automate.decalage(s, new E4);
     			break;
     		case MULT:
-    		automate.decalage(s, new E5);
+    		  return automate.decalage(s, new E5);
     			break;
     		case OPENPAR:
     			break;

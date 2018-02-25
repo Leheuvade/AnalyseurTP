@@ -11,15 +11,15 @@ bool E6::transition(Automate & automate, Symbole *s)
 		case INT:
 			break;
 		case PLUS:
-			automate.decalage(s, new E4);
+			return automate.decalage(s, new E4);
 			break;
 		case MULT:
-			automate.decalage(s, new E5);
+			return automate.decalage(s, new E5);
 			break;
 		case OPENPAR:
 			break;
 		case CLOSEPAR:
-			automate.decalage(s, new E9);
+			return automate.decalage(s, new E9);
 			break;
 		case FIN:
 			break;

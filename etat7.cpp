@@ -9,18 +9,18 @@ bool E7::transition(Automate & automate, Symbole *s)
 		case INT:
 			break;
 		case PLUS:
-			automate.reduction2(s);
+			return automate.reduction2(s);
 			break;
 		case MULT:
-			automate.decalage(s, new E5);
+			return automate.decalage(s, new E5);
 			break;
 		case OPENPAR:
 			break;
 		case CLOSEPAR:
-			automate.reduction2(s);
+			return automate.reduction2(s);
 			break;
 		case FIN:
-			automate.reduction2(s);
+			return automate.reduction2(s);
 			break;
 		case ERREUR:
 			break;

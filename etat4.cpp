@@ -8,14 +8,14 @@ bool E4::transition(Automate & automate, Symbole *s)
 {
 	switch(*s){
     		case INT:
-    			automate.decalage(s, new E3);
+    			return automate.decalage(s, new E3);
     			break;
     		case PLUS:
     			break;
     		case MULT:
     			break;
     		case OPENPAR:
-    			automate.decalage(s, new E2);
+    			return automate.decalage(s, new E2);
     			break;
     		case CLOSEPAR:
     			break;
@@ -24,7 +24,7 @@ bool E4::transition(Automate & automate, Symbole *s)
     		case ERREUR:
     			break;
     		case EXPR:
-    			automate.decalage(s, new E7);
+    			return automate.decalage(s, new E7);
     			break;
 	}
 	return false;

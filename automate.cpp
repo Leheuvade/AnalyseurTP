@@ -17,9 +17,7 @@ void Automate::printStackSymbole(){
 
 }
 
-void Automate::decalage(Symbole * s, Etat * e) {
-	cout<<"décalage ";
-	e->print();
+bool Automate::decalage(Symbole * s, Etat * e) {
 
 	state.push_back(e);
 	symbole.push_back(s);
@@ -30,44 +28,43 @@ void Automate::decalage(Symbole * s, Etat * e) {
 	}
 
 	s = l.Consulter();
-	printStackState();
-	printStackSymbole();
-	s->Affiche();
-	bool ok = e->transition(*this, s);
-	cout<<" validité "<<ok<<endl;
+
+	return  e->transition(*this, s);
 }
 
 void Automate::analyse() {
 	E0 * e0 = new E0;
 	Symbole *s = l.Consulter();
-	e0->transition(*this, s);
-	symbole.back()->Affiche();
-   	
+	bool ok = e0->transition(*this, s);
+	cout<<"validité : "<<ok<<endl;
+	if(ok)
+	{
+		cout<<"résultat : ";
+		Expression * e = (Expression *) symbole.back();
+		cout<<e->eval()<<endl;
+	}
 }
 
-void Automate::reduction(int n, Symbole * s) {
+bool Automate::reduction(int n, Symbole * s) {
 
 	for(int i=0;i<n;i++)
 	{
 		delete(state.back());
 		state.pop_back();
 	}
-	state.back()->transition(*this, s);
-
+	return state.back()->transition(*this, s);
 }
 //E->id
-void Automate::reduction5(Symbole * s) {
-	cout<<"réduction 5"<<endl;
+bool Automate::reduction5(Symbole * s) {
 	Entier * e = (Entier *) symbole.back();
 	symbole.pop_back();
 	Expression * resultat = new Expression(e);
 	delete e;
-	reduction(1,resultat);
+	return reduction(1,resultat);
 }
 
-//E-> (E)
-void Automate::reduction4(Symbole * s) {	
-	cout<<"réduction 4"<<endl;
+//E->(E)
+bool Automate::reduction4(Symbole * s) {	
 	Symbole * openpar = (Symbole *) symbole.back();
 	symbole.pop_back();
 	Entier * e = (Entier *) symbole.back();
@@ -78,12 +75,11 @@ void Automate::reduction4(Symbole * s) {
 	delete openpar;
 	delete e;
 	delete finpar;
-	reduction(3,resultat);
+	return reduction(3,resultat);
 }
 
-//E-> E*E
-void Automate::reduction3(Symbole * s) {	
-	cout<<"réduction 3"<<endl;
+//E->E*E
+bool Automate::reduction3(Symbole * s) {	
 	Entier * e1 = (Entier *) symbole.back();
 	symbole.pop_back();
 	Symbole * mult = (Symbole *) symbole.back();
@@ -94,13 +90,10 @@ void Automate::reduction3(Symbole * s) {
 	delete e1;
 	delete mult;
 	delete e2;
-	reduction(3,resultat);
+	return reduction(3,resultat);
 }
-//E-> E+E
-
-void Automate::reduction2(Symbole * s) {
-
-	cout<<"réduction 2"<<endl;
+//E->E+E
+bool Automate::reduction2(Symbole * s) {
 	Entier * e = (Entier *) symbole.back();
 	symbole.pop_back();
 	Symbole * plus = (Symbole *) symbole.back();
@@ -111,14 +104,5 @@ void Automate::reduction2(Symbole * s) {
 	delete e;
 	delete e2;
 	delete plus;
-	reduction(3,resultat);
-}
-
-void Automate::print() const{
-	state.back()->print();
-	symbole.back()->Affiche();
-}
-
-Etat * Automate::getEtatCourant(){
-	return state.back();
+	return reduction(3,resultat);
 }
