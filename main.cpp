@@ -5,7 +5,7 @@
 
 int main(void) {
 
-   string chaine("(1+34)*123");
+   string chaine("(1+((3*8888)*(4+5))+(34*4))*123");
 	Automate automate(chaine);
    automate.analyse();
 	
